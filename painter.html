@@ -67,6 +67,32 @@
         out.innerHTML=" good "+good+" oops "+oops
     }
     </script>
+    <div class="w3-card-4">
+        <img id="myImage" src="Jacaranda.jpg" alt="Person" width="100" height="100" onclick="swapImage()" role="button">
+    <script>
+        let useImage=1;
+        function swapImage(){
+            var image = document.getElementById('myImage');
+            switch(useImage){
+  case useImage=1:
+  image.src = "Lamina.jpg";
+      useImage=useImage+1;
+    break;
+  case useImage=2:
+  image.src = "Nandina.jpg";
+      useImage=useImage+1;
+    break;
+    case useImage=3:
+  image.src = "Jacaranda.jpg";
+  useImage=1;
+    break;
+  default:
+    // code block
+}
+        }
+     
+    </script>
+      </div>
 
 
 </body>

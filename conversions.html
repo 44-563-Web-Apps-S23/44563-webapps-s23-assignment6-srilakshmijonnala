@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sri Lakshmi</title>
+  </head>
+  <body>
+    <h1>Sri Lakshmi shows currency conversions</h1>
+    <label for="base">Enter base amount:</label>
+    <input type="number" id="base" value="50"><br><br>
+    <label for="conversion">Enter the conversion rate:</label>
+    <input type="number" id="conversion" value="35"><br><br>
+    <button onclick="convert()">Show conversions</button><br><br>
+    <p id="results"></p><br><br>
+    <form>
+        <label><input type="radio" name="operation" value="mean" onclick="chooseOp()">Average</label><br>
+        <label><input type="radio" name="operation" value="maximum" onclick="chooseOp()">Max</label><br>
+        <label><input type="radio" name="operation" value="minimum" onclick="chooseOp()">Min</label><br>
+      </form>
+      <p id="calculation"></p>
+      <script src="currency.js"></script>
+    <script>
+        function convert() {
+  var base = document.getElementById("base").value;
+  var conversion = document.getElementById("conversion").value;
+  var toShow = "";
+  for (var i = 1; i <= 5; i++) {
+    var value = base * Math.pow(2, i-1);
+    var convertedValue = value * conversion;
+    toShow += value + " is " + convertedValue + "; ";
+  }
+  document.getElementById("results").innerHTML = "Conversions are: " + toShow;
+}
+function chooseOp() {
+  var base = document.getElementById("base").value;
+  var conversion = document.getElementById("conversion").value;
+  var operation = document.querySelector('input[name="operation"]:checked').value;
+  var result;
+
+  if (operation === "mean") {
+    result = (parseFloat(base) + parseFloat(conversion)) / 2;
+    document.getElementById("calculation").innerHTML = "Average of " + base + " and " + conversion + " is " + result;
+  } else if (operation === "maximum") {
+    result = Math.max(parseFloat(base), parseFloat(conversion));
+    document.getElementById("calculation").innerHTML = "Max of " + base + " and " + conversion + " is " + result;
+  } else if (operation === "minimum") {
+    result = Math.min(parseFloat(base), parseFloat(conversion));
+    document.getElementById("calculation").innerHTML = "Min of " + base + " and " + conversion + " is " + result;
+  }
+}
+    </script>
+  </body>
+</html>

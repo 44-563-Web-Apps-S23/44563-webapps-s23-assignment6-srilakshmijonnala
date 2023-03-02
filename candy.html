@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Sri Lakshmi's candies
+        </title>
+    </head>
+<body>
+
+<h2>Sri Lakshmi chooses candies</h2>
+<form>
+    <input type="checkbox" id="choc" name="topping1"   
+          value="True">
+        <label for="choc">Dark Chocolate</label></br>
+      
+    <input type="checkbox" id="nut" name="topping2" 
+           value="True">
+        <label for="nut">Nuts</label></br>
+      
+    <input type="checkbox" id="gum" name="topping3"   
+           value="False">
+        <label for="Gum">Chewy</label></br>
+
+    <input type="button" class="btn btn-secondary" type="button" onclick="selectBox()" value="Select a box">
+</form>
+<form>
+    <label for="property">Enter the size</label>
+    <input type ="text" id="property" name="property" value="size"> <br>
+    <label for="check">Enter price</label>
+    <input type ="text" id="value" name="check"><br>
+    <input type="button" class="btn btn-secondary" type="button" onclick="updateBox()" value="Update the box">
+</form>
+<p id="result">This text will be replaced </p>
+<script> 
+var  my_candy_box={choc:true,nut:true,gum:true}
+function selectBox(){
+    my_candy_box={}
+    choc = document.getElementById("choc").value
+    nut = document.getElementById("nut").value
+    gum = document.getElementById("gum").value
+    ou = document.getElementById("result")
+    if(document.getElementById("choc").checked){
+        my_candy_box.choc=true
+      }
+    else{
+        my_candy_box.choc=false
+    }
+    if(document.getElementById("nut").checked){
+        my_candy_box.nut=true        
+      }
+    else{
+        my_candy_box.nut=false
+    }
+    if(document.getElementById("gum").checked){
+        my_candy_box.gum=true
+      }
+    else{my_candy_box.gum=false}
+    ou.innerHTML=JSON.stringify(my_candy_box)    
+}function updateBox(){
+        var s=document.getElementById("property").value
+        var p=document.getElementById("value").value
+        my_candy_box[s]=p
+        ou.innerHTML=JSON.stringify(my_candy_box)
+    }</script>
+</body>
+</html>
